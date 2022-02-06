@@ -1,5 +1,5 @@
 #' Retrieves the API key
-#' 
+#'
 #' @description
 #' `get_key` stops execution and returns an error message if the environment variable `CN_API` is not set to the user's API key. If the environment
 #' variable is not set, the function returns an error message.
@@ -19,4 +19,12 @@ get_key <- function() {
   }
 
   key
+}
+
+# helper function that skips unit tests if no API key is set
+# This function will not be visible by users (inspired by: https://cran.r-project.org/web/packages/httr/vignettes/secrets.html)
+skip_if_no_key <- function() {
+  if (Sys.getenv("CN_API") == "") {
+    skip("No API key available")
+  }
 }
