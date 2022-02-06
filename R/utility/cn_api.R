@@ -1,5 +1,6 @@
 #' cn_api
 #' Makes a query to the Canadian Nutrient Files API.
+#'
 #' @param path the path to the desired endpoint. (Should be one of food, nutrient amount
 #' nutrient group, nutrient name, nutrient source, refuseamount, servingsize, or yieldamount.)
 #' @param userKey key to access the API. Can be retrieved from <https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientamount>.
@@ -13,8 +14,12 @@
 #' the R API package best practices, 
 #' available at <https://httr.r-lib.org/articles/api-packages.html#overall-design-1>.
 #'
-#' @examples cn_api("food")
-#' @examples cn_api("food", id = 2314)
+#' @examples 
+#' cn_api("food")
+#' cn_api("food", id = 2314)
+#' 
+#' @export
+#' 
 cn_api <- function(path, apiKey = NULL, id = NULL, lang = "en") {
   
   if (is.null(path)){
@@ -48,12 +53,7 @@ cn_api <- function(path, apiKey = NULL, id = NULL, lang = "en") {
   # Check status code to make sure query was successful and if not provide useful errors.
   if (status_code(resp) != 200) {
     stop(
-      paste(
-        "Canadian Nutrient File API request failed",
-  #      status_code(resp),
-       parsed$message
- #       parsed$documentation_url
-      ),
+      paste("Canadian Nutrient File API request failed:", status_code(resp), parsed$Message, parsed$documentation_url),
       call. = FALSE
     )
   }
