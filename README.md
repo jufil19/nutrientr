@@ -1,2 +1,19 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # nutrientr
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of nutrientr is to …
+
+## Installation
+
+You can install the development version of nutrientr from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("jufil19/nutrientr")
+```
