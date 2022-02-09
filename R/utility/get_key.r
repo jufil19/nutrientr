@@ -21,8 +21,10 @@ get_key <- function() {
   key
 }
 
+
 # helper function that skips unit tests if no API key is set
 # This function will not be visible by users (inspired by: https://cran.r-project.org/web/packages/httr/vignettes/secrets.html)
+
 skip_if_no_key <- function() {
   if (Sys.getenv("CN_API") == "") {
     skip("No API key available")
