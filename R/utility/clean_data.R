@@ -1,8 +1,8 @@
-# Helper function that formats the output of the cn_api function into a tibble with appropriate column types
+# Helper function that formats the output of the query_api function into a tibble with appropriate column types
 # This function will not be visible by users
 
-cn_cleandata <- function(cn_api_output) {
-  df <- as.data.frame(do.call(rbind, cn_api_output$content))
+clean_data <- function(query_api_output) {
+  df <- as.data.frame(do.call(rbind, query_api_output$content))
 
   # Check if the dataframe is empty
 

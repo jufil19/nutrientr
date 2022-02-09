@@ -1,4 +1,4 @@
-#' cn_api
+#' query_api
 #' Makes a query to the Canadian Nutrient Files API.
 #'
 #' @param path the path to the desired endpoint. (Should be one of food, nutrientamount
@@ -15,12 +15,18 @@
 #' available at <https://httr.r-lib.org/articles/api-packages.html#overall-design-1>.
 #'
 #' @examples
-#' cn_api("food")
-#' cn_api("food", id = 2314)
+#' query_api("food")
+#' query_api("food", id = 2314)
+#' query_api("nutrientgroup", id = 1)
+#' query_api("nutrientname", id = 1)
+#' query_api("nutrientsource", id = 82)
+#' query_api("refuseamount", id = 2314)
+#' query_api("servingsize", id = 2314)
+#' query_api("yieldamoubt", id = 2314)
 #'
 #' @export
 #'
-cn_api <- function(path, apiKey = NULL, id = NULL, lang = "en") {
+query_api <- function(path, apiKey = NULL, id = NULL, lang = "en") {
 
   if (is.null(path)){
     stop("You need to specify and endpoint.")
