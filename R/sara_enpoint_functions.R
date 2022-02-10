@@ -16,8 +16,8 @@
 #'
 #' @examples
 #' get_food()
-#' get_food(food_code = 2314)
-#' get_food(food_code = 2314, lang = "fr")
+#' get_food(foodCode = 2314)
+#' get_food(foodcode = 2314, lang = "fr")
 get_food <- function(apiKey = NULL,
                      foodCode = NULL,
                      lang = "en") {
@@ -35,7 +35,7 @@ get_food <- function(apiKey = NULL,
 
 #' get_yieldamount
 #'
-#' Makes a query to the Canadian Nutrient File food endpoint. This endpoint returns
+#' Makes a query to the Canadian Nutrient File yieldamount endpoint. This endpoint returns
 #' data from a list of food codes and corresponding yield amounts (yield from refuse and or
 #' cooking losses). For instance, if you search the food id 1002 (Beef Gravy), it will tell
 #' you that it takes 5.55 g dehydrated to make 60 mL and 9.26g to make 100 mL. 
@@ -53,8 +53,8 @@ get_food <- function(apiKey = NULL,
 #'
 #' @examples
 #' get_yieldamount()
-#' get_yieldamount(food_code = 2314)
-#' get_yieldamount(food_code = 2314, lang = "fr")
+#' get_yieldamount(foodCode = 2314)
+#' get_yieldamount(foodCode = 2314, lang = "fr")
 get_yieldamount <- function(apiKey = NULL,
                      foodCode = NULL,
                      lang = "en") {
