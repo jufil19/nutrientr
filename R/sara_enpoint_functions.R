@@ -16,8 +16,8 @@
 #'
 #' @examples
 #' get_food()
-#' get_food(food_code = 2314)
-#' get_food(food_code = 2314, lang = "fr")
+#' get_food(foodCode = 2314)
+#' get_food(foodcode = 2314, lang = "fr")
 get_food <- function(apiKey = NULL,
                      foodCode = NULL,
                      lang = "en") {
@@ -53,8 +53,8 @@ get_food <- function(apiKey = NULL,
 #'
 #' @examples
 #' get_yieldamount()
-#' get_yieldamount(food_code = 2314)
-#' get_yieldamount(food_code = 2314, lang = "fr")
+#' get_yieldamount(foodCode = 2314)
+#' get_yieldamount(foodCode = 2314, lang = "fr")
 get_yieldamount <- function(apiKey = NULL,
                      foodCode = NULL,
                      lang = "en") {
