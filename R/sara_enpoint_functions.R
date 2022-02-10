@@ -32,3 +32,40 @@ get_food <- function(apiKey = NULL,
   # Get a clean tibble from the results and return it.
   clean_data(output)
 }
+
+#' get_yieldamount
+#'
+#' Makes a query to the Canadian Nutrient File food endpoint. This endpoint returns
+#' data from a list of food codes and corresponding yield amounts (yield from refuse and or
+#' cooking losses). For instance, if you search the food id 1002 (Beef Gravy), it will tell
+#' you that it takes 5.55 g dehydrated to make 60 mL and 9.26g to make 100 mL. 
+#'
+#' @param apiKey Key to access the API. Can be retrieved from
+#' <https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientamount>.
+#' If none is provided, the system environment variables will be checked.
+#' @param foodCode The code indicating the food you want to search for. If null,
+#' all foods and their corresponding yields are returned.
+#' @param lang The language to return results in, can be either 'en' or 'fr'.
+#'
+#' @return A tibble containing food names and food codes, yield amounts, and yield names. 
+#'
+#' @export
+#'
+#' @examples
+#' get_yieldamount()
+#' get_yieldamount(food_code = 2314)
+#' get_yieldamount(food_code = 2314, lang = "fr")
+get_yieldamount <- function(apiKey = NULL,
+                     foodCode = NULL,
+                     lang = "en") {
+  # Query the food endpoint of the api.
+  output <-
+    query_api(
+      path = "yieldamount",
+      apiKey = apiKey,
+      id = foodCode,
+      lang = lang
+    )
+  # Get a clean tibble from the results and return it.
+  clean_data(output)
+}
