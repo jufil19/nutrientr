@@ -5,7 +5,6 @@
 # Food endpoint
 
 test_that("Structure output is correct for food endpoint", {
-  skip_if_no_key()
   resp_food <- query_api('food', '664fbadd34e6c2ca75235709f9ede2bd', id = 573)
   clean_food <- clean_data(resp_food)
 
@@ -18,7 +17,6 @@ test_that("Structure output is correct for food endpoint", {
 
 # Nutrient amount endpoint
 test_that("Structure output is correct for nutrient amount endpoint", {
-  skip_if_no_key()
   resp_nutrientamount <- query_api('nutrientamount', '664fbadd34e6c2ca75235709f9ede2bd', id = 4)
   clean_nutrientamount <- clean_data(resp_nutrientamount)
 
@@ -31,7 +29,6 @@ test_that("Structure output is correct for nutrient amount endpoint", {
 # Nutrient group endpoint
 
 test_that("Structure output is correct for nutrient group endpoint", {
-  skip_if_no_key()
   resp_nutrientgroup <- query_api('nutrientgroup', '664fbadd34e6c2ca75235709f9ede2bd')
   clean_nutrientgroup <- clean_data(resp_nutrientgroup)
 
@@ -45,7 +42,6 @@ test_that("Structure output is correct for nutrient group endpoint", {
 # Nutrient name endpoint
 
 test_that("Structure output is correct for nutrient name endpoint", {
-  skip_if_no_key()
   resp_nutrientname <- query_api('nutrientname', '664fbadd34e6c2ca75235709f9ede2bd')
   clean_nutrientname <- clean_data(resp_nutrientname)
 
@@ -59,7 +55,6 @@ test_that("Structure output is correct for nutrient name endpoint", {
 # Nutrient source endpoint
 
 test_that("Structure output is correct for nutrient source endpoint", {
-  skip_if_no_key()
   resp_nutrientsource <- query_api('nutrientsource', '664fbadd34e6c2ca75235709f9ede2bd')
   clean_nutrientsource <- clean_data(resp_nutrientsource)
 
@@ -73,7 +68,6 @@ test_that("Structure output is correct for nutrient source endpoint", {
 # Refuse amount endpoint
 
 test_that("Structure output is correct for refuse amount endpoint endpoint", {
-  skip_if_no_key()
   resp_refuseamount <- query_api('refuseamount', '664fbadd34e6c2ca75235709f9ede2bd', id = 44)
   clean_refuseamount <- clean_data(resp_refuseamount)
 
@@ -86,7 +80,6 @@ test_that("Structure output is correct for refuse amount endpoint endpoint", {
 # Serving size endpoint
 
 test_that("Structure output is correct for serving size endpoint endpoint", {
-  skip_if_no_key()
   resp_servingsize <- query_api('servingsize', '664fbadd34e6c2ca75235709f9ede2bd', id = 45)
   clean_servingsize <- clean_data(resp_servingsize)
 
@@ -100,7 +93,6 @@ test_that("Structure output is correct for serving size endpoint endpoint", {
 # Yield amount endpoint
 
 test_that("Structure output is correct for yield amount endpoint", {
-  skip_if_no_key()
   resp_yieldamount <- query_api('yieldamount', '664fbadd34e6c2ca75235709f9ede2bd', id =57)
   clean_yieldamount <- clean_data(resp_yieldamount)
 
