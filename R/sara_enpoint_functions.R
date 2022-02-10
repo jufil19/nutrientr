@@ -35,7 +35,7 @@ get_food <- function(apiKey = NULL,
 
 #' get_yieldamount
 #'
-#' Makes a query to the Canadian Nutrient File food endpoint. This endpoint returns
+#' Makes a query to the Canadian Nutrient File yieldamount endpoint. This endpoint returns
 #' data from a list of food codes and corresponding yield amounts (yield from refuse and or
 #' cooking losses). For instance, if you search the food id 1002 (Beef Gravy), it will tell
 #' you that it takes 5.55 g dehydrated to make 60 mL and 9.26g to make 100 mL. 
