@@ -62,6 +62,9 @@ skip_if_no_key <- function() {
 #'
 query_api <- function(path, apiKey = NULL, id = NULL, lang = "en") {
 
+  # API limit is 60 requests per minute, so wait 1 second do make sure we never go over.
+  Sys.sleep(1)
+
   if (is.null(path)){
     stop("You need to specify and endpoint.")
   }
