@@ -25,4 +25,5 @@ Imports:
     httr,
     stringr,
     testthat,
+    tibble,
     tidyr
