@@ -18,8 +18,8 @@
 #'#'
 #' @examples
 #' get_nutrientamount()
-#' get_nutrientamount(food_code = 2314)
-#' get_nutrientamount(food_code = 2314, lang = "fr")
+#' get_nutrientamount(food_code = 4)
+#' get_nutrientamount(food_code = 4, lang = "fr")
 get_nutrientamount <- function(apiKey=NULL,
                                food_code=NULL,
                                lang="en") {
