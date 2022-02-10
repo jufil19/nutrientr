@@ -58,7 +58,7 @@ get_food <- function(apiKey = NULL,
 get_yieldamount <- function(apiKey = NULL,
                      foodCode = NULL,
                      lang = "en") {
-  # Query the food endpoint of the api.
+  # Query the yieldamount endpoint of the api.
   output <-
     query_api(
       path = "yieldamount",
