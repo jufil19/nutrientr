@@ -27,7 +27,9 @@ food code 557 (Chicken, broiler, meat, skin, giblets and neck) will return
 a refuse amount of 28 and its associated name is 'bone'.
 }
 \examples{
+\dontrun{
 get_refuseamount()
 get_refuseamount(foodCode = 557)
 get_yieldamount(foodCode = 557, lang = "fr")
+}
 }

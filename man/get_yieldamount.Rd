@@ -26,7 +26,9 @@ cooking losses). For instance, if you search the food id 1002 (Beef Gravy), it w
 you that it takes 5.55 g dehydrated to make 60 mL and 9.26g to make 100 mL.
 }
 \examples{
+\dontrun{
 get_yieldamount()
 get_yieldamount(foodCode = 2314)
 get_yieldamount(foodCode = 2314, lang = "fr")
+}
 }

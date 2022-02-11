@@ -15,7 +15,9 @@ the environment variable \code{CN_API} or pass the API key as an argument to the
 variable is not set, the function returns an error message.
 }
 \examples{
+\dontrun{
 get_key()
+}
 }
 \references{
 Note that this function is based on, and repeats much of the code in

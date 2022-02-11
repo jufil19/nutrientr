@@ -17,5 +17,79 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(nutrientr)
+#library(nutrientr)
 ```
+
+## API Access Key
+
+An API key is required to run the functions in `nutrientr` and query the Canadian Nutrient File (CNF) Database. The key can be acquired at https://hc-sc.api.canada.ca/en/detail?api=cnf. The API key can be set in the environment using `Sys.setenv(CN_API = 'your_API_key_here')`. Alternatively, instead of setting the API key in the environment, the key can be passed into the `nutrientr` functions as an argument.
+
+## `nutrientr` Functions
+
+The `nutrientr` package focuses on querying data from the Canadian Nutrient File (CNF) Database and functions fall into the following categories:
+
+- Food information
+- Nutrient information
+- Refuse Amount
+- Serving Size
+- Yield Amount
+
+### Food Information
+
+The `get_food()`, `get_yieldamount()`, `get_nutrientamount()`, and `get_nutrientgroup()` , `get_nutrientname()` , `get_nutrientsource()` , `get_refuseamount()` , `get_servingsize()` functions all retrieve recall summary information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+
+- **foodCode**: 
+- **nutrientGroupId**:  
+- **nutrientNameId**: 
+- **nutrientSourceId**: 
+- **lang**:  
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+
+An example of using `get_food()` to search for the food with food_code as 5 would be as follows:
+
+```{r}
+get_food(foodCode = 5)
+```
+### Nutrient Amount information
+
+The `get_food()`, `get_yieldamount()`, `get_nutrientamount()`, and `get_nutrientgroup()` , `get_nutrientname()` , `get_nutrientsource()` , `get_refuseamount()` , `get_servingsize()` functions all retrieve recall summary information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+
+- **foodCode**: 
+- **nutrientGroupId**:  
+- **nutrientNameId**: 
+- **nutrientSourceId**: 
+- **lang**:  
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+If a user wanted to search and return the all nutrient amount information, `get_nutrientamount()` could be used:
+
+```{r}
+get_nutrientamount()
+```
+or if a user wanted to search and return the nutrient group information of nutrient_group_id of 7, `get_nutrientgroup()` could be used:
+```{r}
+get_nutrientgroup(nutrientGroupId = 7)
+```
+or if a user wanted to search and return the nutrient name information of nutrient_name_id of 550, `get_nutrientname()` could be used:
+```{r}
+get_nutrientname(nutrientNameId = 550)
+```
+or if a user wanted to search and return the all nutrient source information , `get_nutrientsource()` could be used:
+```{r}
+get_nutrientsource()
+```
+### Refuse Amount
+
+```{r}
+get_refuseamount()
+```
+
+```{r}
+get_servingsize()
+```
+
+```{r}
+get_yieldamount()
+```
+

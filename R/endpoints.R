@@ -12,10 +12,14 @@
 #'
 #' @return A tibble containing food names and food ids.
 #'
+#' @export
+#'
 #' @examples
+#' \dontrun{
 #' get_food()
 #' get_food(foodCode = 2314)
 #' get_food(foodcode = 2314, lang = "fr")
+#' }
 get_food <- function(apiKey = NULL,
                      foodCode = NULL,
                      lang = "en") {
@@ -47,10 +51,13 @@ get_food <- function(apiKey = NULL,
 #'
 #' @return A tibble containing food names and food codes, yield amounts, and yield names.
 #'
+#' @export
+#'
 #' @examples
+#' \dontrun{
 #' get_yieldamount()
 #' get_yieldamount(foodCode = 57)
-#' get_yieldamount(foodCode = 57, lang = "fr")
+#' get_yieldamount(foodCode = 57, lang = "fr")}
 get_yieldamount <- function(apiKey = NULL,
                      foodCode = NULL,
                      lang = "en") {
@@ -81,14 +88,19 @@ get_yieldamount <- function(apiKey = NULL,
 #' @return A tibble containing the foodCode, nutrient_value, number_observation,
 #' nutrientNameId, nutrient_web_name, nutrient_source_id
 #'
+#' @export
+#'
 #' @examples
+#' \dontrun{
 #' get_nutrientamount()
 #' get_nutrientamount(foodCode = 4)
 #' get_nutrientamount(foodCode = 4, lang = "fr")
+#' }
 get_nutrientamount <- function(apiKey=NULL,
                                foodCode=NULL,
                                lang="en") {
   # Query nutrientamount endpoint of the api
+
   output <-
     query_api(
       path = "nutrientamount",
@@ -115,11 +127,13 @@ get_nutrientamount <- function(apiKey=NULL,
 #'
 #' @return A tibble containing nutrient group's id, name, order
 #'
+#' @export
+#'
 #' @examples
+#' \dontrun{
 #' get_nutrientgroup()
 #' get_nutrientgroup(nutrientGroupId = 7)
-#' get_nutrientgroup(nutrientGroupId = 7, lang = "fr")
-#'
+#' get_nutrientgroup(nutrientGroupId = 7, lang = "fr")}
 get_nutrientgroup <- function(apiKey=NULL,
                               nutrientGroupId=NULL,
                               lang="en") {
@@ -150,16 +164,19 @@ get_nutrientgroup <- function(apiKey=NULL,
 #'
 #' @return A tibble containing nutrient name id, name, code, web_name and other details
 #'
+#' @export
+#'
 #' @examples
+#' \dontrun{
 #' get_nutrientname()
 #' get_nutrientname(nutrientNameId = 550)
-#' get_nutrientname(nutrientNameId = 550, lang = "fr")
-#'
-#'
+#' get_nutrientname(nutrientNameId = 550, lang = "fr")}
 get_nutrientname <- function(apiKey=NULL,
                              nutrientNameId=NULL,
                              lang="en") {
+
   # Query nutrientname endpoint of the api
+
   output <-
     query_api(
       path = "nutrientname",
@@ -185,10 +202,13 @@ get_nutrientname <- function(apiKey=NULL,
 #'
 #' @return A tibble containing the id's of nutrient sources as well as their corresponding description.
 #'
+#' @export
+#'
 #' @examples
+#' \dontrun{
 #' get_nutrientsource()
 #' get_nutrientsource(nutrientSourceId = 108)
-#' get_nutrientsource(nutrientSourceId = 108, lang = "fr")
+#' get_nutrientsource(nutrientSourceId = 108, lang = "fr")}
 get_nutrientsource <- function(apiKey = NULL,
                                nutrientSourceId = NULL,
                                lang = "en") {
@@ -221,10 +241,12 @@ get_nutrientsource <- function(apiKey = NULL,
 #'
 #' @return A tibble containing refuse name, refuse amount, food names and food codes.
 #'
+#' @export
 #' @examples
+#' \dontrun{
 #' get_refuseamount()
 #' get_refuseamount(foodCode = 557)
-#' get_refuseamount(foodCode = 557, lang = "fr")
+#' get_refuseamount(foodCode = 557, lang = "fr")}
 get_refuseamount <- function(apiKey = NULL,
                              foodCode = NULL,
                              lang = "en") {
@@ -239,7 +261,6 @@ get_refuseamount <- function(apiKey = NULL,
   # Get a clean tibble from the results and return it.
   clean_data(output)
 }
-
 
 #' get_servingsize
 #'
@@ -259,10 +280,13 @@ get_refuseamount <- function(apiKey = NULL,
 #'
 #' @return A tibble containing conversion factor values, food names, food codes and serving sizes.
 #'
+#' @export
+#'
 #' @examples
+#' \dontrun{
 #' get_servingsize()
 #' get_servingsize(foodCode = 45)
-#' get_servingsize(foodCode = 45, lang = "fr")
+#' get_servingsize(foodCode = 45, lang = "fr")}
 get_servingsize <- function(apiKey = NULL,
                             foodCode = NULL,
                             lang = "en") {
