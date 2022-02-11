@@ -187,9 +187,27 @@ get_nutrientname <- function(apiKey=NULL,
       id = nutrientNameId,
       lang = lang)
 
-  # Get a clean tibble from the results and return it.
-  clean_data(output)
+  # Get a clean tibble from the results and return it (only effective if no nutrientNameId is passed and all table is returned).
+  clean <- clean_data(output)
+
+  # Reformatting when there is only one Id (clean_data() function not effective for this endpoint in the case where nutrientNameId is not NULL)
+  if (is.null(nutrientNameId) == FALSE) {
+    col_names <- c("nutrient_name_id", "nutrient_symbol", "nutrient_name", "unit",
+                   "nutrient_code", "tagname", "nutrient_decimals", "nutrient_web_order",
+                   "nutrient_web_name",  "nutrient_group_id")
+
+    clean_df <- as.data.frame(t(clean))
+    colnames(clean_df) <- col_names
+
+    # Setting appropriate type for columns
+    cols <- c("nutrient_name_id", "nutrient_code", "nutrient_decimals", "nutrient_web_order", "nutrient_group_id")
+    clean_df[cols] <- sapply(clean_df[cols], as.integer)
+    clean <- tibble::as.tibble(clean_df)
+
+  }
+  clean
 }
+
 
 #' get_nutrientsource
 #'
@@ -223,9 +241,23 @@ get_nutrientsource <- function(apiKey = NULL,
       id = nutrientSourceId,
       lang = lang
     )
-  # Get a clean tibble from the results and return it.
-  clean_data(output)
+  # Get a clean tibble from the results and return it.(only effective if no nutrientSourceId is passed and all table is returned)
+  clean <- clean_data(output)
+
+  # Reformatting when there is only one Id (clean_data() function not effective for this endpoint in the case where nutrientSourceId is not NULL)
+  if (is.null(nutrientSourceId) == FALSE) {
+    col_names <- c("nutrient_source_id", "nutrient_source_description", "nutrient_source_code")
+    clean_df <- as.data.frame(t(clean))
+    colnames(clean_df) <- col_names
+
+    # Setting appropriate type for columns
+    cols <- c("nutrient_source_id", "nutrient_source_code")
+    clean_df[cols] <- sapply(clean_df[cols], as.integer)
+    clean <- tibble::as.tibble(clean_df)
+  }
+  clean
 }
+
 
 #' get_refuseamount
 #'
