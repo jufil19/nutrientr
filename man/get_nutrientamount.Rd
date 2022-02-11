@@ -25,7 +25,9 @@ Makes a query to the Canadian Nutrient File nutrientamount endpoint. This endpoi
 a list of nutrient id's and their corresponding nutrient amounts/
 }
 \examples{
+\dontrun{
 get_nutrientamount()
 get_nutrientamount(foodCode = 4)
 get_nutrientamount(foodCode = 4, lang = "fr")
+}
 }

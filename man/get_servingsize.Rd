@@ -27,7 +27,9 @@ portion and raw edible portion.
 \href{https://www.researchgate.net/publication/327790633_Cooking_conversion_factor_of_commonly_consumed_Sri_Lankan_food_items#:~:text=Conversion\%20factor\%20is\%20the\%20proportion,water\%20reduction\%20and\%20fat\%20absorption.}{conversion factor}
 }
 \examples{
+\dontrun{
 get_servingsize()
 get_servingsize(foodCode = 45)
 get_yieldamount(foodCode = 45, lang = "fr")
+}
 }

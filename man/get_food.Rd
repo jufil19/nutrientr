@@ -24,7 +24,9 @@ Makes a query to the Canadian Nutrient File food endpoint. This endpoint returns
 data from a list of food codes and corresponding names.
 }
 \examples{
+\dontrun{
 get_food()
 get_food(foodCode = 2314)
 get_food(foodcode = 2314, lang = "fr")
+}
 }
