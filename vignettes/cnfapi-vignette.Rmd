@@ -46,7 +46,7 @@ The `get_food()` function retrieves food information from the CNF based on user 
 An example of using `get_food()` to search for the food with food_code as 5 would be as follows:
 
 ```{r}
-get_food(foodCode = 5)
+#get_food(foodCode = 5)
 ```
 ### Nutrient Amount information
 
@@ -62,19 +62,19 @@ The `get_nutrientamount()`, `get_nutrientgroup()` , `get_nutrientname()` , `get_
 If a user wanted to search and return the all nutrient amount information, `get_nutrientamount()` could be used:
 
 ```{r}
-get_nutrientamount()
+#get_nutrientamount()
 ```
 or if a user wanted to search and return the nutrient group information of nutrient_group_id of 7, `get_nutrientgroup()` could be used:
 ```{r}
-get_nutrientgroup(nutrientGroupId = 7)
+#get_nutrientgroup(nutrientGroupId = 7)
 ```
 or if a user wanted to search and return the nutrient name information of nutrient_name_id of 550, `get_nutrientname()` could be used:
 ```{r}
-get_nutrientname()
+#get_nutrientname()
 ```
 or if a user wanted to search and return the all nutrient source information , `get_nutrientsource()` could be used:
 ```{r}
-get_nutrientsource()
+#get_nutrientsource()
 ```
 ### Refuse Amount
 
@@ -86,7 +86,7 @@ The `get_refuseamount()` function retrieves refuse amount information from the C
 
 If a user wanted to search and return the all refuse amount information , `get_refuseamount()` could be used:
 ```{r}
-get_refuseamount()
+#get_refuseamount()
 ```
 ### Serving Size
 
@@ -98,7 +98,7 @@ The `get_servingsize()` functions all retrieve serving sizes information from th
 
 If a user wanted to search and return the all serving size information , `get_servingsize()` could be used:
 ```{r}
-get_servingsize()
+#get_servingsize()
 ```
 ### Yield Amount
 The `get_yieldamount()`function retrieves yield information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
@@ -109,6 +109,6 @@ The `get_yieldamount()`function retrieves yield information from the CNF based o
 
 If a user wanted to search and return the all yield amount information , `get_yieldamount()` could be used:
 ```{r}
-get_yieldamount()
+#get_yieldamount()
 ```
 
