@@ -8,11 +8,11 @@ Authors@R:
            email = "filionjustine05@gmail.com"), 
       person(given = "Sara",
            family = "Hall",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "sara.hall@shaw.ca"),
       person(given = "Saisree",
            family = "GR",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "saisree.gr@gmail.com"))
 Description: This package contains functions that wraps the Canadian Nutrient File (CNF) API available at <https://hc-sc.api.canada.ca/en/detail?api=cnf>. This database reports the quantity of nutrients in foods commonly consumed in Canada.   
 License: `use_mit_license(name = "Justine Filion, Sara Hall and Saisree GR")`
@@ -27,3 +27,7 @@ Imports:
     testthat,
     tibble,
     tidyr
+Suggests: 
+    rmarkdown,
+    knitr
+VignetteBuilder: knitr

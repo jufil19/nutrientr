@@ -12,8 +12,6 @@
 #'
 #' @return A tibble containing food names and food ids.
 #'
-#' @export
-#'
 #' @examples
 #' get_food()
 #' get_food(foodCode = 2314)
@@ -48,9 +46,7 @@ get_food <- function(apiKey = NULL,
 #' @param lang The language to return results in, can be either 'en' or 'fr'.
 #'
 #' @return A tibble containing food names and food codes, yield amounts, and yield names. 
-#'
-#' @export
-#'
+#' 
 #' @examples
 #' get_yieldamount()
 #' get_yieldamount(foodCode = 2314)
@@ -85,9 +81,6 @@ get_yieldamount <- function(apiKey = NULL,
 #' @return A tibble containing the foodCode, nutrient_value, number_observation, 
 #' nutrientNameId, nutrient_web_name, nutrient_source_id
 #'
-#' @export
-#'
-#'#'
 #' @examples
 #' get_nutrientamount()
 #' get_nutrientamount(foodCode = 4)
@@ -121,8 +114,6 @@ get_nutrientamount <- function(apiKey=NULL,
 #' @param lang The language to return results in, can be either 'en' or 'fr'.
 #'
 #' @return A tibble containing nutrient group's id, name, order  
-#'
-#' @export
 #'
 #' @examples
 #' get_nutrientgroup()
@@ -159,8 +150,6 @@ get_nutrientgroup <- function(apiKey=NULL,
 #'
 #' @return A tibble containing nutrient name id, name, code, web_name and other details
 #'
-#' @export
-#'
 #' @examples
 #' get_nutrientname()
 #' get_nutrientname(nutrientNameId = 550)
@@ -195,8 +184,6 @@ get_nutrientname <- function(apiKey=NULL,
 #' @param lang The language to return results in, can be either 'en' or 'fr'.
 #'
 #' @return A tibble containing the id's of nutrient sources as well as their corresponding description. 
-#'
-#' @export
 #'
 #' @examples
 #' get_nutrientsource()
@@ -233,8 +220,6 @@ get_nutrientsource <- function(apiKey = NULL,
 #' @param lang The language to return results in, can be either 'en' or 'fr'.
 #'
 #' @return A tibble containing refuse name, refuse amount, food names and food codes. 
-#'
-#' @export
 #'
 #' @examples
 #' get_refuseamount()
@@ -273,8 +258,6 @@ get_refuseamount <- function(apiKey = NULL,
 #' @param lang The language to return results in, can be either 'en' or 'fr'.
 #'
 #' @return A tibble containing conversion factor values, food names, food codes and serving sizes. 
-#'
-#' @export
 #'
 #' @examples
 #' get_servingsize()
