@@ -1,7 +1,6 @@
 ---
-title: "nutrientr Vignette"
+title: "Vignette for the nutrientr Package"
 author: "Sara Hall, Justine Filion, Saisree Gownipalli Ramanaiah"
-date: "February 10,2022"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{cnfapi-vignette}
@@ -18,23 +17,32 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(nutrientr)
+library(ggplot)
 ```
 
-## API Access Key
+## Description
 
-An API key is required to run the functions in `nutrientr` and query the Canadian Nutrient File (CNF) Database. The key can be acquired at https://hc-sc.api.canada.ca/en/detail?api=cnf. The API key can be set in the environment using `Sys.setenv(CN_API = 'your_API_key_here')`. Alternatively, instead of setting the API key in the environment, the key can be passed into the `nutrientr` functions as an argument.
+The `nutrientr` package is an R wrapper for the [Canadian Nutrient File (CNF) API](https://hc-sc.api.canada.ca/en/detail?api=cnf). It contains information about commonly consumed foods in Canada. There are eight different endpoints that give access to different types of information. 
 
-## `nutrientr` Functions
+- The food endpoint gives a list of food ids and their corresponding description (name). 
+- The nutrientamount endpoint gives lists of the amounts of different nutrients in the foods. 
+- The nutrientgroup endpoint gives nutrient groups (eg. carbohydrates, others), and their corresponding ids. 
+- The nutrientname endpoint give the ids of different nutrients and their corresponding names, symbols, units, etc. 
+- The nutrientsource endpoint gives information about where information about nutrients was pulled from (eg. FDA).
+- The refuseamount endpoint gives information about the amount of food waste for different foods (eg. the inedible portion of the foods - like bones). 
+- The servingsize endpoint gives the servings sizes for the different foods. 
+- The yieldamount endpoint gives the amount of food needed to get the desired quantity of end product (eg. the amount of dried gravy powder to make 100 mLs).
 
-The `nutrientr` package focuses on querying data from the Canadian Nutrient File (CNF) Database and functions fall into the following categories:
+## Getting Started - API Access Key
 
-- Food information
-- Nutrient information
-- Refuse Amount
-- Serving Size
-- Yield Amount
+In order to use the `nutrientr` package, you will need to get an API key from the [Canada Open Data API Store](https://hc-sc.api.canada.ca/en/detail?api=cnf). Once you have this, you can either set is as a system environment variable using `Sys.setenv(CN_API = 'your_API_key_here')` or pass it as a parameter to the functions. 
 
-### Food Information
+## Function Usage
+
+The `nutrientr` package contains several function that wrap the CNF API endpoints listed above in the description. The following documentation will give examples of how to use them. 
+
+
+### `get_food()`
 
 The `get_food()` function retrieves food information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
 
@@ -46,7 +54,7 @@ The `get_food()` function retrieves food information from the CNF based on user 
 An example of using `get_food()` to search for the food with food_code as 5 would be as follows:
 
 ```{r}
-#get_food(foodCode = 5)
+get_food(foodCode = 5)
 ```
 ### Nutrient Amount information
 
@@ -62,19 +70,19 @@ The `get_nutrientamount()`, `get_nutrientgroup()` , `get_nutrientname()` , `get_
 If a user wanted to search and return the all nutrient amount information, `get_nutrientamount()` could be used:
 
 ```{r}
-#get_nutrientamount()
+get_nutrientamount(foodCode = 2314)
 ```
 or if a user wanted to search and return the nutrient group information of nutrient_group_id of 7, `get_nutrientgroup()` could be used:
 ```{r}
-#get_nutrientgroup(nutrientGroupId = 7)
+get_nutrientgroup(nutrientGroupId = 7)
 ```
 or if a user wanted to search and return the nutrient name information of nutrient_name_id of 550, `get_nutrientname()` could be used:
 ```{r}
-#get_nutrientname()
+get_nutrientname()
 ```
 or if a user wanted to search and return the all nutrient source information , `get_nutrientsource()` could be used:
 ```{r}
-#get_nutrientsource()
+get_nutrientsource()
 ```
 ### Refuse Amount
 
@@ -86,7 +94,7 @@ The `get_refuseamount()` function retrieves refuse amount information from the C
 
 If a user wanted to search and return the all refuse amount information , `get_refuseamount()` could be used:
 ```{r}
-#get_refuseamount()
+get_refuseamount()
 ```
 ### Serving Size
 
@@ -98,7 +106,7 @@ The `get_servingsize()` functions all retrieve serving sizes information from th
 
 If a user wanted to search and return the all serving size information , `get_servingsize()` could be used:
 ```{r}
-#get_servingsize()
+get_servingsize()
 ```
 ### Yield Amount
 The `get_yieldamount()`function retrieves yield information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
@@ -109,6 +117,6 @@ The `get_yieldamount()`function retrieves yield information from the CNF based o
 
 If a user wanted to search and return the all yield amount information , `get_yieldamount()` could be used:
 ```{r}
-#get_yieldamount()
+get_yieldamount()
 ```
 

@@ -1,3 +1,5 @@
 ^nutrientr\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
+^doc$
+^Meta$
