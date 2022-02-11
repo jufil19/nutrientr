@@ -34,7 +34,6 @@ query_api("nutrientsource", id = 82)
 query_api("refuseamount", id = 2314)
 query_api("servingsize", id = 2314)
 query_api("yieldamoubt", id = 2314)
-
 }
 \references{
 Note that this function is based on, and repeats much of the code in
