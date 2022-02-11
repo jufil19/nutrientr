@@ -25,8 +25,9 @@ returns a list of all nutrient groups, or if an ID is provided, the list of all
 nutrient groups that correspond to the given nutrient group identification number
 }
 \examples{
+\dontrun{
 get_nutrientgroup()
 get_nutrientgroup(nutrientGroupId = 7)
 get_nutrientgroup(nutrientGroupId = 7, lang = "fr")
-
+}
 }

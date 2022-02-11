@@ -39,7 +39,7 @@ test_that("yieldamount endpoint is reachable", {
 })
 
 test_that("Invalid endpoint will yield an error", {
-  resp <- query_api('yieldamout', '664fbadd34e6c2ca75235709f9ede2bd')
+  resp <- query_api('yieldamount', '664fbadd34e6c2ca75235709f9ede2bd')
   expect_equal(resp$response$status_code, 200)
 })
 

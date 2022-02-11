@@ -25,9 +25,10 @@ returns a list of all nutrient names, or if an ID is provided, the list of
 all nutrient names that correspond to the given nutrient name identification number
 }
 \examples{
+\dontrun{
 get_nutrientname()
 get_nutrientname(nutrientNameId = 550)
 get_nutrientname(nutrientNameId = 550, lang = "fr")
-
+}
 
 }
