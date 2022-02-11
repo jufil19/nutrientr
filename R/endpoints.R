@@ -76,7 +76,9 @@ get_yieldamount <- function(apiKey = NULL,
 #' get_nutrientamount
 #'
 #' Makes a query to the Canadian Nutrient File nutrientamount endpoint. This endpoint returns
-#' a list of nutrient id's and their corresponding nutrient amounts/
+#' a list of nutrient id's and details about their corresponding nutrient amounts,
+#' standard error of observation of nutrient amount and their names. For instance,
+#' for nutrient id 5,  the name of the nutrient measured is caffeine and its nutrient value is 0.
 #'
 #' @param apiKey Key to access the API. Can be retrieved from
 #' <https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientamount>.
@@ -115,13 +117,13 @@ get_nutrientamount <- function(apiKey=NULL,
 #' get_nutrientgroup
 #'
 #' Makes a query to the Canadian Nutrient File refuseamount endpoint. This endpoint
-#' returns a list of all nutrient groups, or if an ID is provided, the list of all
-#' nutrient groups that correspond to the given nutrient group identification number
+#' returns a list of all nutrient group ids and their names. For instance,
+#' if nutrient group id is mentioned as 5, the corressponding group name is amino acids
 #'
 #' @param apiKey Key to access the API. Can be retrieved from
 #' <https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientgroup>.
 #' If none is provided, the system environment variables will be checked.
-#' @param nutrientGroupId The code indicating the food group you want to search for. If null,
+#' @param nutrientGroupId The code indicating the nutrient group you want to search for. If null,
 #' all foods and their corresponding names are returned.
 #' @param lang The language to return results in, can be either 'en' or 'fr'.
 #'
@@ -152,8 +154,9 @@ get_nutrientgroup <- function(apiKey=NULL,
 #' get_nutrientname
 #'
 #' Makes a query to the Canadian Nutrient File nutrientname endpoint. This endpoint
-#' returns a list of all nutrient names, or if an ID is provided, the list of
-#' all nutrient names that correspond to the given nutrient name identification number
+#' returns a list of all nutrient names, symbols, names, unit of measurement, nutrient group name, etc.
+#' For instance, for nutrient name id of 810, the corresponding nutrient symbol is STAR and nutrient name is
+#' STARCH, unit is 2 and nutrient group id is 2.
 #'
 #' @param apiKey Key to access the API. Can be retrieved from
 #' <https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientname>.
