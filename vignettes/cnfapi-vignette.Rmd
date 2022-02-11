@@ -36,13 +36,10 @@ The `nutrientr` package focuses on querying data from the Canadian Nutrient File
 
 ### Food Information
 
-The `get_food()`, `get_yieldamount()`, `get_nutrientamount()`, and `get_nutrientgroup()` , `get_nutrientname()` , `get_nutrientsource()` , `get_refuseamount()` , `get_servingsize()` functions all retrieve recall summary information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+The `get_food()` function retrieves food information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
 
-- **foodCode**: 
-- **nutrientGroupId**:  
-- **nutrientNameId**: 
-- **nutrientSourceId**: 
-- **lang**:  
+- **foodCode**: List of foodCode of foods available. The values depend on each endpoint. 
+- **lang**:  Define which language you would like the response to be in query string
 - **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
 
 
@@ -53,13 +50,13 @@ get_food(foodCode = 5)
 ```
 ### Nutrient Amount information
 
-The `get_food()`, `get_yieldamount()`, `get_nutrientamount()`, and `get_nutrientgroup()` , `get_nutrientname()` , `get_nutrientsource()` , `get_refuseamount()` , `get_servingsize()` functions all retrieve recall summary information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+The `get_nutrientamount()`, `get_nutrientgroup()` , `get_nutrientname()` , `get_nutrientsource()` functions retrieve nutrient amount information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
 
-- **foodCode**: 
-- **nutrientGroupId**:  
-- **nutrientNameId**: 
-- **nutrientSourceId**: 
-- **lang**:  
+- **foodCode**: List of foodCode of foods available. The values depend on each endpoint. 
+- **nutrientGroupId**:  List of nutrient group ids available.
+- **nutrientNameId**: List of all nutrient names for all the foods
+- **nutrientSourceId**: List of all nutrient sources listed by their source id
+- **lang**:  Define which language you would like the response to be in query string
 - **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
 
 If a user wanted to search and return the all nutrient amount information, `get_nutrientamount()` could be used:
@@ -73,7 +70,7 @@ get_nutrientgroup(nutrientGroupId = 7)
 ```
 or if a user wanted to search and return the nutrient name information of nutrient_name_id of 550, `get_nutrientname()` could be used:
 ```{r}
-get_nutrientname(nutrientNameId = 550)
+get_nutrientname()
 ```
 or if a user wanted to search and return the all nutrient source information , `get_nutrientsource()` could be used:
 ```{r}
@@ -81,14 +78,36 @@ get_nutrientsource()
 ```
 ### Refuse Amount
 
+The `get_refuseamount()` function retrieves refuse amount information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+
+- **foodCode**: List of foodCode of foods available. The values depend on each endpoint.  
+- **lang**:  Define which language you would like the response to be in query string
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+If a user wanted to search and return the all refuse amount information , `get_refuseamount()` could be used:
 ```{r}
 get_refuseamount()
 ```
+### Serving Size
 
+The `get_servingsize()` functions all retrieve serving sizes information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+
+- **foodCode**: List of foodCode of foods available. The values depend on each endpoint.  
+- **lang**:  Define which language you would like the response to be in query string
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+If a user wanted to search and return the all serving size information , `get_servingsize()` could be used:
 ```{r}
 get_servingsize()
 ```
+### Yield Amount
+The `get_yieldamount()`function retrieves yield information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
 
+- **foodCode**: List of foodCode of foods available. The values depend on each endpoint.  
+- **lang**:  Define which language you would like the response to be in query string
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+If a user wanted to search and return the all yield amount information , `get_yieldamount()` could be used:
 ```{r}
 get_yieldamount()
 ```
