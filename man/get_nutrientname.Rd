@@ -28,7 +28,5 @@ all nutrient names that correspond to the given nutrient name identification num
 \dontrun{
 get_nutrientname()
 get_nutrientname(nutrientNameId = 550)
-get_nutrientname(nutrientNameId = 550, lang = "fr")
-}
-
+get_nutrientname(nutrientNameId = 550, lang = "fr")}
 }

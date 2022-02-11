@@ -30,6 +30,5 @@ a refuse amount of 28 and its associated name is 'bone'.
 \dontrun{
 get_refuseamount()
 get_refuseamount(foodCode = 557)
-get_yieldamount(foodCode = 557, lang = "fr")
-}
+get_refuseamount(foodCode = 557, lang = "fr")}
 }

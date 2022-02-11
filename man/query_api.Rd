@@ -34,12 +34,8 @@ query_api("nutrientname", id = 1)
 query_api("nutrientsource", id = 82)
 query_api("refuseamount", id = 2314)
 query_api("servingsize", id = 2314)
-<<<<<<< HEAD
-query_api("yieldamoubt", id = 2314)
-=======
 query_api("yieldamount", id = 2314)
 }
->>>>>>> 4c37504d3074a09bee3d4e7e5c1f02b36c70e69b
 }
 \references{
 Note that this function is based on, and repeats much of the code in

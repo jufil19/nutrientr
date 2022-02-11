@@ -28,6 +28,5 @@ nutrient groups that correspond to the given nutrient group identification numbe
 \dontrun{
 get_nutrientgroup()
 get_nutrientgroup(nutrientGroupId = 7)
-get_nutrientgroup(nutrientGroupId = 7, lang = "fr")
-}
+get_nutrientgroup(nutrientGroupId = 7, lang = "fr")}
 }

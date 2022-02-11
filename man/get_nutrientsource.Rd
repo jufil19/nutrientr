@@ -26,7 +26,6 @@ a list of nutrient source id's and their corresponding description.
 \examples{
 \dontrun{
 get_nutrientsource()
-get_food(foodCode = 2314)
-get_food(foodCode = 2314, lang = "fr")
-}
+get_nutrientsource(nutrientSourceId = 108)
+get_nutrientsource(nutrientSourceId = 108, lang = "fr")}
 }

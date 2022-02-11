@@ -30,6 +30,5 @@ portion and raw edible portion.
 \dontrun{
 get_servingsize()
 get_servingsize(foodCode = 45)
-get_yieldamount(foodCode = 45, lang = "fr")
-}
+get_servingsize(foodCode = 45, lang = "fr")}
 }

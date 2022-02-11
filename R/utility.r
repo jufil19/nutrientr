@@ -6,7 +6,6 @@
 #'
 #' @return The user's API key, if set as an environment variable. If key is not set, returns an error message indicating that the user can either set
 #' the environment variable `CN_API` or pass the API key as an argument to the function.
-
 #' @references Note that this function is based on, and repeats much of the code in
 #'   the R API package best practices, available at <https://httr.r-lib.org/articles/api-packages.html#overall-design-1>.
 #'

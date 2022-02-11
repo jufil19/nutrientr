@@ -28,7 +28,6 @@ you that it takes 5.55 g dehydrated to make 60 mL and 9.26g to make 100 mL.
 \examples{
 \dontrun{
 get_yieldamount()
-get_yieldamount(foodCode = 2314)
-get_yieldamount(foodCode = 2314, lang = "fr")
-}
+get_yieldamount(foodCode = 57)
+get_yieldamount(foodCode = 57, lang = "fr")}
 }
