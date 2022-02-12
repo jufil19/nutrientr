@@ -28,6 +28,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect
+    ggplot2
 Suggests: 
     rmarkdown,
     knitr
