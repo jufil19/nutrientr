@@ -86,13 +86,13 @@ If you want to find the nutrient name information for nutrientNameId 550 call `g
 ```{r}
 get_nutrientname(nutrientNameId = 550)
 ```
-If you want to find the nutrient source information for nutrientSourceId 108, call `get_nutrientsource()`:
+If you want to find the nutrient source information for all nutrient sources, call `get_nutrientsource()`:
 ```{r}
 head(get_nutrientsource())
 ```
 If you want to find the nutrient source information for nutrient source number 108 call `get_nutrientsource(nutrientSourceId = 108)`:
 ```{r}
-get_nutrientname(nutrientNameId = 108)
+get_nutrientsource(nutrientSourceId = 108)
 ```
 
 ### `get_refuseamount()`
@@ -137,15 +137,48 @@ Let's say we're super interested in comparing Roquefort Cheese (food code = 46),
 
 ```{r}
 #The API doesn't accept multiple IDs at once, so we have to make two queries. 
-rbind.data.frame(get_food(foodCode = 45), get_food(foodCode = 46))
+rbind(get_food(foodCode = 45), get_food(foodCode = 46))
 ```
 
-Now that we've confirmed that we have two types of cheese, let's get the nutrition information for both and compare it. 
+Now that we've confirmed that we have two types of cheese, let's see the serving sizes for both. 
 
 ```{r}
-#The API doesn't accept multiple IDs at once, so we have to make two queries. 
-nutrients_amounts <- get_nutrientamount(foodCode = 45)
-nutrient_names <- get_nutrientname()
-nutrient_sources <- get_nutrientsource()
-nutrient_groups <- get_nutrientgroup()
+rbind(get_servingsize(foodCode = 45), get_servingsize(foodCode = 46))
 ```
+
+Cool, now we can convert between different ways to serve these two types of cheese using the base measurement of 50g. Next, we'll check if either have any refuse amounts or corresponding yields. Since they are both cheeses and don't require any preparation, they shouldn't. This means we should get 0 for total refuse, and errors for the yields saying the queries are invalid since there's no info in the database. 
+
+```{r}
+get_refuseamount(foodCode = 45)
+get_refuseamount(foodCode = 46)
+```
+```{r}
+try({
+  get_yieldamount(foodCode = 45)
+  get_yieldamount(foodCode = 46)
+})
+```
+
+
+Now let's get the nutrition information for both cheeses and compare it. 
+
+```{r, include=FALSE}
+#The API doesn't accept multiple IDs at once, so we have to make two queries. 
+nutrition <- rbind(get_all_nutrient_info(foodCode = 45), get_all_nutrient_info(foodCode = 46))
+```
+```{r}
+head(nutrition)
+```
+
+Got it! Now we have ample information to plot. As a simple example of something to look at, let's compare the amounts of the different amino acids in the two cheeses. These are what make up proteins, so they should present in relatively high levels in cheese. 
+
+```{r,fig1, fig.height = 5, fig.width = 6}
+filtered <- nutrition |> dplyr::filter(nutrient_group_name == "Amino Acids")
+ggplot(data = filtered, aes(x=nutrient_name, y=nutrient_value, fill = food_description))+
+  geom_bar(stat = 'summary', fun = sum, position = "dodge") +
+  theme_classic() + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(x = "Amino Acid", y = "Amount (g)", fill = "Cheese")
+```
+
+Awesome! We can see that romano cheese has higher levels of almost all amino acids, particularly glutamic acid. 
