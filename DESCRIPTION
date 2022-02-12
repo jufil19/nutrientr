@@ -27,7 +27,8 @@ Imports:
     testthat,
     tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    ggplot2
 Suggests: 
     rmarkdown,
     knitr

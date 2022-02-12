@@ -6,6 +6,7 @@
 #'
 #' @return The user's API key, if set as an environment variable. If key is not set, returns an error message indicating that the user can either set
 #' the environment variable `CN_API` or pass the API key as an argument to the function.
+
 #' @references Note that this function is based on, and repeats much of the code in
 #'   the R API package best practices, available at <https://httr.r-lib.org/articles/api-packages.html#overall-design-1>.
 #'
@@ -56,14 +57,19 @@ skip_if_no_key <- function() {
 #'
 #' @examples
 #' \dontrun{
+
 #' query_api("food")
 #' query_api("food", id = 2314)
 #' query_api("nutrientgroup", id = 1)
 #' query_api("nutrientname", id = 1)
+
 #' query_api("nutrientsource", id = 82)
 #' query_api("refuseamount", id = 2314)
+
+
 #' query_api("servingsize", id = 2314)
 #' query_api("yieldamount", id = 2314)
+
 #' }
 query_api <- function(path, apiKey = NULL, id = NULL, lang = "en") {
 
