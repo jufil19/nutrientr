@@ -304,3 +304,37 @@ get_servingsize <- function(apiKey = NULL,
   # Get a clean tibble from the results and return it.
   clean_data(output)
 }
+
+#' get_all_nutrient_info(foodCode)
+#'
+#' Makes queries to the Canadian Nutrient APIs to get all available nutrient information
+#' about a particular food.
+#'
+#' @param foodCode The code indicating the food you want to search for.
+#' @param apiKey Key to access the API. Can be retrieved from
+#' <https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientamount>.
+#' If none is provided, the system environment variables will be checked.
+#' @param lang The language to return results in, can be either 'en' or 'fr'.
+#'
+#' @return A tibble containing all available nutrient information about the food code.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' get_all_nutrient_info(foodCode = 45)
+#' }
+get_all_nutrient_info <- function( foodCode,
+                                   apiKey = NULL,
+                                   lang = "en"){
+  nutrient_amounts <- get_nutrientamount(foodCode = foodCode, apiKey = apiKey, lang = lang)
+  nutrient_names <- get_nutrientname(apiKey = apiKey, lang = lang)
+  nutrient_sources <- get_nutrientsource(apiKey = apiKey, lang = lang)
+  nutrient_groups <- get_nutrientgroup(apiKey = apiKey, lang = lang)
+
+  dplyr::left_join(nutrient_amounts, nutrient_names,
+                    by = c("nutrient_name_id" = "nutrient_code", "nutrient_web_name")) |>
+    dplyr::left_join(nutrient_groups, by = "nutrient_group_id") |>
+      dplyr::left_join(nutrient_sources, by = "nutrient_source_id") |>
+        dplyr::left_join(get_food(foodCode = foodCode, apiKey = apiKey, lang = lang))
+}
