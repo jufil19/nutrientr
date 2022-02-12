@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+install.packages("ggplot2")
 library(nutrientr)
 library(ggplot2)
 ```
