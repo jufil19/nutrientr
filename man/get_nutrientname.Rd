@@ -21,8 +21,9 @@ A tibble containing nutrient name id, name, code, web_name and other details
 }
 \description{
 Makes a query to the Canadian Nutrient File nutrientname endpoint. This endpoint
-returns a list of all nutrient names, or if an ID is provided, the list of
-all nutrient names that correspond to the given nutrient name identification number
+returns a list of all nutrient names, symbols, names, unit of measurement, nutrient group name, etc.
+For instance, for nutrient name id of 810, the corresponding nutrient symbol is STAR and nutrient name is
+STARCH, unit is 2 and nutrient group id is 2.
 }
 \examples{
 \dontrun{

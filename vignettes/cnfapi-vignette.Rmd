@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(nutrientr)
-library(ggplot)
+library(ggplot2)
 ```
 
 ## Description
@@ -44,10 +44,10 @@ The `nutrientr` package contains several function that wrap the CNF API endpoint
 
 ### `get_food()`
 
-The `get_food()` function retrieves food information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+The `get_food()` function retrieves food information from the CNF using the following arguments: 
 
-- **foodCode**: List of foodCode of foods available. The values depend on each endpoint. 
-- **lang**:  Define which language you would like the response to be in query string
+- **foodCode**: The id for the food you are searching for. If none is passed, then a list of all foods in the database will be returned.  
+- **lang**:  Define in which language you would like the response to be (can be 'en' or 'fr').
 - **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
 
 
@@ -56,67 +56,96 @@ An example of using `get_food()` to search for the food with food_code as 5 woul
 ```{r}
 get_food(foodCode = 5)
 ```
-### Nutrient Amount information
+### Nutrient Information: `get_nutrientamount()`, `get_nutrientgroup()`, `get_nutrientname()` and `get_nutrientsource()`
 
-The `get_nutrientamount()`, `get_nutrientgroup()` , `get_nutrientname()` , `get_nutrientsource()` functions retrieve nutrient amount information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+The `get_nutrientamount()`, `get_nutrientgroup()` , `get_nutrientname()` and `get_nutrientsource()` functions returns nutrient amount information from the CNF using the following parameters. 
 
-- **foodCode**: List of foodCode of foods available. The values depend on each endpoint. 
-- **nutrientGroupId**:  List of nutrient group ids available.
-- **nutrientNameId**: List of all nutrient names for all the foods
-- **nutrientSourceId**: List of all nutrient sources listed by their source id
-- **lang**:  Define which language you would like the response to be in query string
+- **foodCode**: The id for the food you are searching for. If none is passed, then a list of all foods in the database will be returned.  
+- **lang**:  Define in which language you would like the response to be (can be 'en' or 'fr').
 - **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+- **nutrientGroupId**: The Nutrient Group ID.
+- **nutrientNameId**: The ID for the nutrient name. 
+- **nutrientSourceId**: The id for the source of the nutrient information. 
 
-If a user wanted to search and return the all nutrient amount information, `get_nutrientamount()` could be used:
+
+If a user wanted to search and return the all nutrient amount information, `get_nutrientamount()` could be used, though there is a lot of data (500K lines), so this will take a long time. Instead, we will look for food #2314 (Spinach Souffle):
 
 ```{r}
-get_nutrientamount(foodCode = 2314)
+head(get_nutrientamount(foodCode = 2314))
 ```
-or if a user wanted to search and return the nutrient group information of nutrient_group_id of 7, `get_nutrientgroup()` could be used:
+If you want to find the nutrient group information for nutrient_group_id 7 call `get_nutrientgroup()`:
 ```{r}
 get_nutrientgroup(nutrientGroupId = 7)
 ```
-or if a user wanted to search and return the nutrient name information of nutrient_name_id of 550, `get_nutrientname()` could be used:
-```{r}
-get_nutrientname()
-```
-or if a user wanted to search and return the all nutrient source information , `get_nutrientsource()` could be used:
-```{r}
-get_nutrientsource()
-```
-### Refuse Amount
 
-The `get_refuseamount()` function retrieves refuse amount information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+To see all of the nutrient groups, don't provide a nutrient_group_id:
+```{r}
+get_nutrientgroup()
+```
+If you want to find the nutrient name information for nutrientNameId 550 call `get_nutrientname(nutrientNameId = 550)`:
+```{r}
+get_nutrientname(nutrientNameId = 550)
+```
+If you want to find the nutrient source information for nutrientSourceId 108, call `get_nutrientsource()`:
+```{r}
+head(get_nutrientsource())
+```
+If you want to find the nutrient source information for nutrient source number 108 call `get_nutrientsource(nutrientSourceId = 108)`:
+```{r}
+get_nutrientname(nutrientNameId = 108)
+```
 
-- **foodCode**: List of foodCode of foods available. The values depend on each endpoint.  
-- **lang**:  Define which language you would like the response to be in query string
+### `get_refuseamount()`
+
+The `get_refuseamount()` function retrieves refuse amount information from the CNF using the following parameters:
+
+- **foodCode**: The id for the food you are searching for. If none is passed, then a list of all foods in the database will be returned.  
+- **lang**:  Define in which language you would like the response to be (can be 'en' or 'fr').
 - **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
 
-If a user wanted to search and return the all refuse amount information , `get_refuseamount()` could be used:
+If you want to find the refuse amount information for all foods where this information is available, call `get_refuseamount()`:
 ```{r}
-get_refuseamount()
+head(get_refuseamount())
 ```
 ### Serving Size
 
-The `get_servingsize()` functions all retrieve serving sizes information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+The `get_servingsize()` functions all retrieve serving sizes information from the CNF using the following parameters:
 
 - **foodCode**: List of foodCode of foods available. The values depend on each endpoint.  
 - **lang**:  Define which language you would like the response to be in query string
 - **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
 
-If a user wanted to search and return the all serving size information , `get_servingsize()` could be used:
+If you want to find the serving size information for all foods where this information is available, call `get_servingsize()`:
 ```{r}
 get_servingsize()
 ```
 ### Yield Amount
-The `get_yieldamount()`function retrieves yield information from the CNF based on user search terms. An overview of the search terms and function arguments includes:
+The `get_yieldamount()`function retrieves yield information from the CNF using the following arguments: 
 
 - **foodCode**: List of foodCode of foods available. The values depend on each endpoint.  
 - **lang**:  Define which language you would like the response to be in query string
 - **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
 
-If a user wanted to search and return the all yield amount information , `get_yieldamount()` could be used:
+If you want to find the yield amount information for all foods where this information is available, call `get_yieldamount()`:
 ```{r}
-get_yieldamount()
+head(get_yieldamount())
 ```
 
+## A Fully Worked Example
+
+Let's say we're super interested in comparing Roquefort Cheese (food code = 46), with Romano Cheese (food code = 45). I know these codes from looking through the full list (calling `get_food()`), to demonstrate, I'll get the names for these two cheeses using their codes. 
+
+```{r}
+#The API doesn't accept multiple IDs at once, so we have to make two queries. 
+rbind.data.frame(get_food(foodCode = 45), get_food(foodCode = 46))
+```
+
+Now that we've confirmed that we have two types of cheese, let's get the nutrition information for both and compare it. 
+
+```{r}
+#The API doesn't accept multiple IDs at once, so we have to make two queries. 
+nutrients_amounts <- get_nutrientamount(foodCode = 45)
+nutrient_names <- get_nutrientname()
+nutrient_sources <- get_nutrientsource()
+nutrient_groups <- get_nutrientgroup()
+```

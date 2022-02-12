@@ -22,7 +22,9 @@ nutrientNameId, nutrient_web_name, nutrient_source_id
 }
 \description{
 Makes a query to the Canadian Nutrient File nutrientamount endpoint. This endpoint returns
-a list of nutrient id's and their corresponding nutrient amounts/
+a list of nutrient id's and details about their corresponding nutrient amounts,
+standard error of observation of nutrient amount and their names. For instance,
+for nutrient id 5,  the name of the nutrient measured is caffeine and its nutrient value is 0.
 }
 \examples{
 \dontrun{

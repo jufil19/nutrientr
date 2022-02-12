@@ -11,7 +11,7 @@ get_nutrientgroup(apiKey = NULL, nutrientGroupId = NULL, lang = "en")
 \url{https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientgroup}.
 If none is provided, the system environment variables will be checked.}
 
-\item{nutrientGroupId}{The code indicating the food group you want to search for. If null,
+\item{nutrientGroupId}{The code indicating the nutrient group you want to search for. If null,
 all foods and their corresponding names are returned.}
 
 \item{lang}{The language to return results in, can be either 'en' or 'fr'.}
@@ -21,8 +21,8 @@ A tibble containing nutrient group's id, name, order
 }
 \description{
 Makes a query to the Canadian Nutrient File refuseamount endpoint. This endpoint
-returns a list of all nutrient groups, or if an ID is provided, the list of all
-nutrient groups that correspond to the given nutrient group identification number
+returns a list of all nutrient group ids and their names. For instance,
+if nutrient group id is mentioned as 5, the corressponding group name is amino acids
 }
 \examples{
 \dontrun{
