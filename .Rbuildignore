@@ -3,3 +3,6 @@
 ^README\.Rmd$
 ^doc$
 ^Meta$
+^cran-comments\.md$
+^\.circleci$
+^\.circleci/config\.yml$

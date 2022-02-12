@@ -19,6 +19,11 @@ knitr::opts_chunk$set(
 #install.packages("ggplot2")
 library(nutrientr)
 library(ggplot2)
+library(dplyr)
+```
+
+```{r, echo = FALSE, include = FALSE}
+Sys.setenv("CN_API" = "4ed46e31519f0bb5b7a66a5d350a4f1c")
 ```
 
 ## Description
