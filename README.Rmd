@@ -18,14 +18,201 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of nutrientr is to ...
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE, include = FALSE}
+library(nutrientr)
+library(ggplot2)
+```
+
+## Description
+
+The `nutrientr` package is an R wrapper for the [Canadian Nutrient File (CNF) API](https://hc-sc.api.canada.ca/en/detail?api=cnf). It contains information about commonly consumed foods in Canada. There are eight different endpoints that give access to different types of information. 
+
+- The food endpoint gives a list of food ids and their corresponding description (name). 
+- The nutrientamount endpoint gives lists of the amounts of different nutrients in the foods. 
+- The nutrientgroup endpoint gives nutrient groups (eg. carbohydrates, others), and their corresponding ids. 
+- The nutrientname endpoint give the ids of different nutrients and their corresponding names, symbols, units, etc. 
+- The nutrientsource endpoint gives information about where information about nutrients was pulled from (eg. FDA).
+- The refuseamount endpoint gives information about the amount of food waste for different foods (eg. the inedible portion of the foods - like bones). 
+- The servingsize endpoint gives the servings sizes for the different foods. 
+- The yieldamount endpoint gives the amount of food needed to get the desired quantity of end product (eg. the amount of dried gravy powder to make 100 mLs).
 
 ## Installation
 
-You can install the development version of nutrientr from [GitHub](https://github.com/) with:
+The `nutrientr` package can be installed and loaded in your library via [CRAN](https://cran.r-project.org/) using the following commands :
 
-``` r
+```
+install.packages('nutrientr')
+library(nutrientr)
+```
+You can also install the development version available on Github using the following code :
+
+```
 # install.packages("devtools")
 devtools::install_github("jufil19/nutrientr")
 ```
+
+## Getting Started - API Access Key
+
+In order to use the `nutrientr` package, you will need to get an API key from the [Canada Open Data API Store](https://hc-sc.api.canada.ca/en/detail?api=cnf). Once you have this, you can either set is as a system environment variable using `Sys.setenv(CN_API = 'your_API_key_here')` or pass it as a parameter to the functions. 
+
+## Usage
+
+The `nutrientr` package contains several functions that wrap the CNF API endpoints listed above in the description. The following documentation will give examples of how to use them. 
+
+
+### `get_food()`
+
+The `get_food()` function retrieves food information from the CNF using the following arguments: 
+
+- **foodCode**: The id for the food you are searching for. If none is passed, then a list of all foods in the database will be returned.  
+- **lang**:  Define in which language you would like the response to be (can be 'en' or 'fr').
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+
+An example of using `get_food()` to search for the food with food_code as 5 would be as follows:
+
+```{r}
+get_food(foodCode = 5)
+```
+### Nutrient Information: `get_nutrientamount()`, `get_nutrientgroup()`, `get_nutrientname()` and `get_nutrientsource()`
+
+The `get_nutrientamount()`, `get_nutrientgroup()` , `get_nutrientname()` and `get_nutrientsource()` functions returns nutrient amount information from the CNF using the following parameters. 
+
+- **foodCode**: The id for the food you are searching for. If none is passed, then a list of all foods in the database will be returned.  
+- **lang**:  Define in which language you would like the response to be (can be 'en' or 'fr').
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+- **nutrientGroupId**: The Nutrient Group ID.
+- **nutrientNameId**: The ID for the nutrient name. 
+- **nutrientSourceId**: The id for the source of the nutrient information. 
+
+
+If a user wanted to search and return the all nutrient amount information, `get_nutrientamount()` could be used, though there is a lot of data (500K lines), so this will take a long time. Instead, we will look for food #2314 (Spinach Souffle):
+
+```{r}
+head(get_nutrientamount(foodCode = 2314))
+```
+If you want to find the nutrient group information for nutrient_group_id 7 call `get_nutrientgroup()`:
+```{r}
+get_nutrientgroup(nutrientGroupId = 7)
+```
+
+To see all of the nutrient groups, don't provide a nutrient_group_id:
+```{r}
+get_nutrientgroup()
+```
+If you want to find the nutrient name information for nutrientNameId 550 call `get_nutrientname(nutrientNameId = 550)`:
+```{r}
+get_nutrientname(nutrientNameId = 550)
+```
+If you want to find the nutrient source information for all nutrient sources, call `get_nutrientsource()`:
+```{r}
+head(get_nutrientsource())
+```
+If you want to find the nutrient source information for nutrient source number 108 call `get_nutrientsource(nutrientSourceId = 108)`:
+```{r}
+get_nutrientsource(nutrientSourceId = 108)
+```
+
+### `get_refuseamount()`
+
+The `get_refuseamount()` function retrieves refuse amount information from the CNF using the following parameters:
+
+- **foodCode**: The id for the food you are searching for. If none is passed, then a list of all foods in the database will be returned.  
+- **lang**:  Define in which language you would like the response to be (can be 'en' or 'fr').
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+If you want to find the refuse amount information for all foods where this information is available, call `get_refuseamount()`:
+```{r}
+head(get_refuseamount())
+```
+### Serving Size
+
+The `get_servingsize()` functions all retrieve serving sizes information from the CNF using the following parameters:
+
+- **foodCode**: List of foodCode of foods available. The values depend on each endpoint.  
+- **lang**:  Define which language you would like the response to be in query string
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+If you want to find the serving size information for all foods where this information is available, call `get_servingsize()`:
+```{r}
+get_servingsize()
+```
+### Yield Amount
+The `get_yieldamount()`function retrieves yield information from the CNF using the following arguments: 
+
+- **foodCode**: List of foodCode of foods available. The values depend on each endpoint.  
+- **lang**:  Define which language you would like the response to be in query string
+- **apiKey**: If an API key is not set in the environment, an access key can be passed directly into a function.
+
+If you want to find the yield amount information for all foods where this information is available, call `get_yieldamount()`:
+```{r}
+head(get_yieldamount())
+```
+
+## A Fully Worked Example
+
+Let's say we're super interested in comparing Roquefort Cheese (food code = 46), with Romano Cheese (food code = 45). I know these codes from looking through the full list (calling `get_food()`), to demonstrate, I'll get the names for these two cheeses using their codes. 
+
+```{r}
+#The API doesn't accept multiple IDs at once, so we have to make two queries. 
+rbind(get_food(foodCode = 45), get_food(foodCode = 46))
+```
+
+Now that we've confirmed that we have two types of cheese, let's see the serving sizes for both. 
+
+```{r}
+rbind(get_servingsize(foodCode = 45), get_servingsize(foodCode = 46))
+```
+
+Cool, now we can convert between different ways to serve these two types of cheese using the base measurement of 50g. Next, we'll check if either have any refuse amounts or corresponding yields. Since they are both cheeses and don't require any preparation, they shouldn't. This means we should get 0 for total refuse, and errors for the yields saying the queries are invalid since there's no info in the database. 
+
+```{r}
+get_refuseamount(foodCode = 45)
+get_refuseamount(foodCode = 46)
+```
+```{r}
+try({
+  get_yieldamount(foodCode = 45)
+  get_yieldamount(foodCode = 46)
+})
+```
+
+
+Now let's get the nutrition information for both cheeses and compare it. 
+
+```{r, include=FALSE}
+#The API doesn't accept multiple IDs at once, so we have to make two queries. 
+nutrition <- rbind(get_all_nutrient_info(foodCode = 45), get_all_nutrient_info(foodCode = 46))
+```
+```{r}
+head(nutrition)
+```
+
+Got it! Now we have ample information to plot. As a simple example of something to look at, let's compare the amounts of the different amino acids in the two cheeses. These are what make up proteins, so they should present in relatively high levels in cheese. 
+
+```{r,fig1, fig.height = 5, fig.width = 6}
+filtered <- nutrition |> dplyr::filter(nutrient_group_name == "Amino Acids")
+ggplot(data = filtered, aes(x=nutrient_name, y=nutrient_value, fill = food_description))+
+  geom_bar(stat = 'summary', fun = sum, position = "dodge") +
+  theme_classic() + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  labs(x = "Amino Acid", y = "Amount (g)", fill = "Cheese")
+```
+
+Awesome! We can see that romano cheese has higher levels of almost all amino acids, particularly glutamic acid. 
+
+## Contributing
+
+If you are interested in contributing to this project, please refer to the [CONTRIBUTING.md](https://github.com/jufil19/nutrientr/blob/main/CONTRIBUTING.md) file in this repository. Also, please note that anyone who wishes to do so must respect the following [Code of Conduct](https://github.com/jufil19/nutrientr/blob/main/CODE_OF_CONDUCT.md). 
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
 
