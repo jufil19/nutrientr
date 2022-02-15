@@ -32,7 +32,7 @@ get_key <- function() {
 
 skip_if_no_key <- function() {
   if (Sys.getenv("CN_API") == "") {
-    skip("No API key available")
+    testthat::skip("No API key available")
   }
 }
 
