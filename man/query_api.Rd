@@ -11,12 +11,12 @@ query_api(path, apiKey = NULL, id = NULL, lang = "en")
 \item{path}{the path to the desired endpoint. (Should be one of food, nutrientamount
 nutrientgroup, nutrientname, nutrientsource, refuseamount, servingsize, or yieldamount.)}
 
+\item{apiKey}{key to access the API. Can be retrieved from \url{https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientamount}.
+If none is provided, @seealso \code{\link[=get_key]{get_key()}} will check the system environments for one.}
+
 \item{id}{the id of what you're looking for. Meaning of the id changes depending on endpoint.}
 
 \item{lang}{the language you are using and want results returned in.}
-
-\item{userKey}{key to access the API. Can be retrieved from \url{https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientamount}.
-If none is provided, @seealso \code{\link[=get_key]{get_key()}} will check the system environments for one.}
 }
 \value{
 a structure with the parsed text response, the raw response, the endpoint path, and the id.

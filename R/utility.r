@@ -42,7 +42,7 @@ skip_if_no_key <- function() {
 #'
 #' @param path the path to the desired endpoint. (Should be one of food, nutrientamount
 #' nutrientgroup, nutrientname, nutrientsource, refuseamount, servingsize, or yieldamount.)
-#' @param userKey key to access the API. Can be retrieved from <https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientamount>.
+#' @param apiKey key to access the API. Can be retrieved from <https://hc-sc.api.canada.ca/en/detail?api=cnf#!/Nutrient/get_nutrientamount>.
 #' If none is provided, @seealso [get_key()] will check the system environments for one.
 #' @param id the id of what you're looking for. Meaning of the id changes depending on endpoint.
 #' @param lang the language you are using and want results returned in.
@@ -133,8 +133,11 @@ query_api <- function(path, apiKey = NULL, id = NULL, lang = "en") {
 }
 
 
-# Helper function that formats the output of the query_api function into a tibble with appropriate column types
-# This function will not be visible by users
+
+#' clean_data
+#' Helper function that formats the output of the query_api function into a tibble with appropriate column types
+#'
+#' @param query_api_output the output provided by the `query_api` function.
 #'
 #' @export
 #'

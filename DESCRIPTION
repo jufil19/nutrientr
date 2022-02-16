@@ -31,7 +31,8 @@ Imports:
     tidyselect,
     ggplot2,
     dplyr,
-    jsonlite
+    jsonlite,
+    qpdf
 Suggests: 
     rmarkdown,
     knitr
