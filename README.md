@@ -1,10 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/jufil19/nutrientr)
 
 # nutrientr
 
 <!-- badges: start -->
+
+[![CircleCI build
+status](https://circleci.com/gh/jufil19/nutrientr.svg?style=svg)](https://app.circleci.com/pipelines/github/jufil19/nutrientr)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/nutrientr)](https://CRAN.R-project.org/package=nutrientr)
 <!-- badges: end -->
 
 ## Description

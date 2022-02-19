@@ -1,6 +1,6 @@
 Package: nutrientr
 Title: R Wrapper for the Canadian Nutrient File API
-Version: 0.0.0.9000
+Version: 0.1
 Authors@R: 
     c(person(given = "Justine",
            family = "Filion",
